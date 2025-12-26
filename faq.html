@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FAQ | Audiology Students Network</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #0d99ff;
+      --secondary: #625bff;
+      --accent: #b34dff;
+      --bg: #fafafa;
+      --text: #111;
+    }
+
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; scroll-behavior: smooth; }
+
+    /* FADE-IN */
+    .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.9s ease, transform 0.9s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* NAVBAR */
+    .navbar { position: sticky; top: 0; z-index: 1000; background: rgba(255,255,255,0.95); backdrop-filter: blur(8px); box-shadow: 0 6px 20px rgba(0,0,0,0.05); }
+    .nav-container { max-width: 1200px; margin: 0 auto; padding: 16px 20px; display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-weight: 700; font-size: 1.05rem; }
+    .nav-links { list-style: none; display: flex; gap: 28px; margin: 0; padding: 0; align-items: center; }
+    .nav-links a { text-decoration: none; color: var(--text); font-weight: 500; }
+    .nav-links a.active { color: var(--primary); font-weight: 600; }
+    .nav-cta { padding: 10px 18px; background: var(--text); color: #fff !important; border-radius: 10px; font-weight: 600; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+    .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.2); }
+    .menu-toggle { display: none; font-size: 1.6rem; cursor: pointer; }
+
+    @media (max-width: 760px) {
+      .nav-links { display: none; flex-direction: column; gap: 16px; margin-top: 20px; }
+      .nav-links.open { display: flex; }
+      .menu-toggle { display: block; }
+    }
+
+    /* HERO */
+    header.hero { text-align: center; padding: 90px 20px 60px; background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent)); color: #fff; }
+    header.hero h1 { font-size: clamp(2.2rem, 5vw, 3rem); margin-bottom: 15px; }
+    header.hero p { font-size: 1.2rem; max-width: 750px; margin: 0 auto; opacity: 0.95; }
+
+    /* SECTIONS */
+    .container { max-width: 1000px; margin: 0 auto; padding: 80px 20px; }
+    section { margin-bottom: 80px; }
+    h2 { font-size: 2rem; margin-bottom: 15px; background: linear-gradient(90deg, var(--primary), var(--accent)); -webkit-background-clip: text; color: transparent; text-align: center; }
+    p { color: #333; max-width: 850px; margin: 0 auto 20px; }
+
+    /* SEARCH BAR */
+    .faq-search { display: block; width: 100%; max-width: 500px; margin: 20px auto 40px; padding: 14px 18px; border-radius: 12px; border: 1px solid #ccc; font-size: 1rem; }
+
+    /* FAQ ITEMS */
+    .faq-item { background: #fff; border-radius: 18px; padding: 20px; margin-bottom: 20px; box-shadow: 0 12px 30px rgba(0,0,0,0.06); cursor: pointer; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+    .faq-item:hover { transform: translateY(-2px); box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
+    .faq-question { font-weight: 600; font-size: 1.1rem; display: flex; justify-content: space-between; align-items: center; }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; padding-top: 0; }
+    .faq-item.open .faq-answer { max-height: 500px; padding-top: 12px; }
+
+    /* CTA */
+    .cta { background: #fff; padding: 70px 30px; border-radius: 28px; box-shadow: 0 25px 60px rgba(0,0,0,0.08); text-align: center; }
+    .cta a { display: inline-block; margin-top: 20px; padding: 16px 36px; background: var(--text); color: #fff; text-decoration: none; border-radius: 14px; font-weight: 600; }
+
+    /* FOOTER */
+    footer { text-align: center; padding: 40px 20px; font-size: 0.9rem; color: #666; }
+
+    @media (max-width: 600px) { header.hero p { font-size: 1.05rem; } }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION BAR -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo">Audiology Students Network</div>
+      <div class="menu-toggle" onclick="toggleMenu()">&#9776;</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="community.html">Community</a></li>
+        <li><a href="faq.html" class="active">FAQ</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="#waitlist" class="nav-cta">Join</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero fade-in">
+    <h1>Frequently Asked Questions</h1>
+    <p>Find answers to common questions about the Audiology Students Network.</p>
+  </header>
+
+  <main class="container">
+
+    <section class="fade-in">
+      <input type="text" class="faq-search" placeholder="Search FAQs..." onkeyup="filterFAQs()">
+
+      <div id="faq-list">
+        <div class="faq-item">
+          <div class="faq-question">What is the Audiology Students Network? <span>+</span></div>
+          <div class="faq-answer"><p>A nationwide community connecting audiology students for learning, collaboration, and career growth.</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">Who can join? <span>+</span></div>
+          <div class="faq-answer"><p>Any student studying audiology in Nigeria can join the network and access resources.</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">Are there fees to join? <span>+</span></div>
+          <div class="faq-answer"><p>Joining the network is free for students. Some resources or events may have optional costs.</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">How can I access learning resources? <span>+</span></div>
+          <div class="faq-answer"><p>Once registered, you will have access to lecture notes, clinical guides, research papers, and more online.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta fade-in">
+      <h2>Join the Community</h2>
+      <p>Be part of a growing network of audiology students committed to learning and professional growth.</p>
+      <a href="index.html#waitlist">Join the Waitlist</a>
+    </section>
+
+  </main>
+
+  <footer>
+    Audiology Students Network © 2025 · Built for future hearing experts
+  </footer>
+
+  <!-- JS -->
+  <script>
+    // Fade-in sections
+    const faders = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('visible'); });
+    }, { threshold: 0.3 });
+    faders.forEach(el => observer.observe(el));
+
+    // Mobile menu toggle
+    function toggleMenu() { document.querySelector('.nav-links').classList.toggle('open'); }
+
+    // FAQ toggle
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(item => {
+      const question = item.querySelector('.faq-question');
+      question.addEventListener('click', () => {
+        item.classList.toggle('open');
+        const span = question.querySelector('span');
+        span.textContent = item.classList.contains('open') ? '−' : '+';
+      });
+    });
+
+    // FAQ search filter
+    function filterFAQs() {
+      const input = document.querySelector('.faq-search').value.toLowerCase();
+      faqItems.forEach(item => {
+        const questionText = item.querySelector('.faq-question').textContent.toLowerCase();
+        item.style.display = questionText.includes(input) ? 'block' : 'none';
+      });
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>News | Audiology Students Network</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css"> <!-- your CSS file -->
+</head>
+<body>
+ 
+<!-- Navbar -->
+<nav class="navbar">
+  <div class="nav-container">
+    <div class="logo">Audiology Students Network</div>
+
+     <!-- Mobile toggle -->
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="community.html">Community</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="news.html" class="active">News</a></li>
+      <li><a href="index.html#waitlist" class="nav-cta">Join</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- CSS (can go in your style.css or inside <style> in the head) -->
+<style>
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 28px;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #111;
+  font-weight: 500;
+  transition: 0.25s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  background: linear-gradient(90deg, #0d99ff, #b34dff);
+  -webkit-background-clip: text;
+  color: transparent;
+  font-weight: 600;
+}
+
+.nav-cta {
+  padding: 10px 18px;
+  background: linear-gradient(90deg, #0d99ff, #b34dff);
+  color: #fff !important;
+  border-radius: 10px;
+  font-weight: 600;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.nav-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  opacity: 0.9;
+}
+
+/* Mobile Menu */
+.menu-toggle {
+  display: none;
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+@media (max-width: 760px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 20px;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+}
+</style>
+
+<!-- JS for mobile toggle -->
+<script>
+const toggle = document.querySelector('.menu-toggle');
+const navLinks = document.querySelector('.nav-links');
+
+toggle.addEventListener('click', () => {
+  navLinks.classList.toggle('open');
+});
+</script>
+
+  <!-- Hero -->
+  <header class="hero fade-in" style="text-align:center; padding:90px 20px; background:linear-gradient(135deg, #0d99ff, #625bff, #b34dff); color:#fff;">
+    <h1 style="font-size:clamp(2.2rem,5vw,3rem); margin-bottom:15px;">Latest News & Updates</h1>
+    <p style="font-size:1.2rem; max-width:700px; margin:0 auto; opacity:0.95;">
+      Stay updated with news, announcements, and events for audiology students.
+    </p>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container fade-in" style="max-width:1100px; margin:50px auto; padding:0 20px;">
+    
+    <!-- News Section -->
+    <section id="news-list">
+
+      <div class="news-post" style="background:#fff; padding:30px; border-radius:20px; box-shadow:0 12px 30px rgba(0,0,0,0.06); margin-bottom:30px;">
+        <h3 style="font-size:1.5rem; margin-bottom:10px;">New Audiology Workshop</h3>
+        <p style="color:#666; font-size:0.95rem; margin-bottom:15px;">Dec 26, 2025</p>
+        <p>Join our online workshop on hearing assessment techniques for audiology students nationwide.</p>
+      </div>
+
+      <div class="news-post" style="background:#fff; padding:30px; border-radius:20px; box-shadow:0 12px 30px rgba(0,0,0,0.06); margin-bottom:30px;">
+        <h3 style="font-size:1.5rem; margin-bottom:10px;">Scholarship Announced</h3>
+        <p style="color:#666; font-size:0.95rem; margin-bottom:15px;">Dec 20, 2025</p>
+        <p>Applications for our annual audiology scholarship are now open. Don’t miss this opportunity!</p>
+      </div>
+
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer style="text-align:center; padding:40px 20px; font-size:0.9rem; color:#666;">
+    Audiology Students Network © 2025
+  </footer>
+
+</body>
+</html>
